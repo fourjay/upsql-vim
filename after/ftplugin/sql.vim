@@ -1,2 +1,2 @@
-map <Plug>SQLupcase :call upsql#case#upper()
-imap <cr> <Plug>SQLupcase
+map <Plug>SQLupcase :call upsql#case#upper()<cr>
+imap <cr> <esc><Plug>SQLupcase

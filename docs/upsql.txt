@@ -1,0 +1,19 @@
+USAGE                                       *upsql-usage*
+=========================================================
+
+Not much to it. If filetype is sql, then keywords are capitalized after
+space or return. 
+
+DETAILS                                   *upsql-details*
+=========================================================
+
+A wrapper around the synID suggestion from this vim usage thread
+
+https://groups.google.com/forum/#!searchin/vim_use/synid$20sql/vim_use/k-evBSOrNQM/RU69PaHuXnwJ
+
+Maps space and Cr in insert mode. Uses an intermediary character to avoid
+recursively mapping space, currently mapped to <F12> a value that seems highly
+unlikely to be typed into normal text usage. Uses a direct mapping, as the
+clearly preferable map to <expr> doesn't work when 'secure' is set.
+
+vim: ft=help

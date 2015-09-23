@@ -1,5 +1,9 @@
 function! upsql#case#upper(char)
     let l:end_position = len(getline("."))
+    if l:end_position == 0
+        call feedkeys( "$A" .a:char )
+        return
+    endif
     let l:current_pos = getpos(".")[2]
     if match( getline('.'), '\<\w\+\>') != -1
                 \ &&  l:end_position == l:current_pos

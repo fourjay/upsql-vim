@@ -1,9 +1,19 @@
-function! upsql#case#upper(char)
+function! upsql#case#uppernewline(char)
+    let save_cursor = getcurpos()
+    call <SID>upcase()
+    call setpos('.', save_cursor)
+    call feedkeys( "a" . a:char )
+endfunction
+
+function! upsql#case#upperspace(char)
+    let save_cursor = getcurpos()
+    call <SID>upcase()
+    call setpos('.', save_cursor)
+    call feedkeys( a:char )
+endfunction
+
+function s:upcase()
     let l:end_position = len(getline("."))
-    if l:end_position == 0
-        call feedkeys( "$A" .a:char )
-        return
-    endif
     let l:current_pos = getpos(".")[2]
     if match( getline('.'), '\<\w\+\>') != -1
                 \ &&  l:end_position == l:current_pos
@@ -17,7 +27,5 @@ function! upsql#case#upper(char)
                     \       toupper(submatch(0))
                     \       :submatch(0)/g
         " back to end of line then insert original character
-        call feedkeys( "$A" .a:char )
     endif
 endfunction
-

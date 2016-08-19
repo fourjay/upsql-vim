@@ -1,22 +1,21 @@
-function! upsql#case#uppernewline(char)
+function! upsql#case#uppernewline(char) abort
     let save_cursor = getcurpos()
-    call <SID>upcase()
+    call s:upcase()
     call setpos('.', save_cursor)
-    call feedkeys( "a" . a:char )
+    call feedkeys( 'a' . a:char )
 endfunction
 
-function! upsql#case#upperspace(char)
+function! upsql#case#upperspace(char) abort
     let save_cursor = getcurpos()
-    call <SID>upcase()
+    call s:upcase()
     call setpos('.', save_cursor)
     call feedkeys( a:char )
 endfunction
 
-function s:upcase()
-    let l:end_position = len(getline("."))
-    let l:current_pos = getpos(".")[2]
+function s:upcase() abort
+    let l:end_position = len(getline('.'))
+    let l:current_pos = getpos('.')[2]
     if match( getline('.'), '\<\w\+\>') != -1
-                \ &&  l:end_position == l:current_pos
                 \ && l:end_position != 0
         " run programatic substitution against each word
         s/\M\<\w\+\>/\=synIDattr(

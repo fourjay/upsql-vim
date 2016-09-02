@@ -4,7 +4,7 @@ inoremap <F12>n <CR>
 inoremap <cr> <esc>:call upsql#case#uppernewline("\<F12>n")<cr>
 
 inoremap <F12>s <space>
-inoremap <space> <C-O>:call upsql#case#upperspace("\<F12>s")<cr>
+inoremap <space> <C-R>=upsql#case#upperspace("\<F12>s")<cr>
 
 " trigger only if there is no tab mapping (AKA supertab snipmate etc)
 let tab_map = maparg("<tab>", "i")

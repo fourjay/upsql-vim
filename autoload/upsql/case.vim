@@ -9,7 +9,7 @@ function! upsql#case#upperspace(char) abort
     let save_cursor = getcurpos()
     call s:upcase()
     call setpos('.', save_cursor)
-    call feedkeys( a:char )
+    return( "\<space>" )
 endfunction
 
 function s:upcase() abort

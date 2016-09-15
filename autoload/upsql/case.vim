@@ -1,15 +1,14 @@
-function! upsql#case#uppernewline(char) abort
+function! upsql#case#uppercase(char) abort
     let save_cursor = getcurpos()
     call s:upcase()
     call setpos('.', save_cursor)
-    call feedkeys( 'a' . a:char )
-endfunction
-
-function! upsql#case#upperspace(char) abort
-    let save_cursor = getcurpos()
-    call s:upcase()
-    call setpos('.', save_cursor)
-    return( "\<space>" )
+    if (a:char =~ 'space' )
+        return( "\<space>" )
+    elseif (a:char =~ 'cr' )
+        return( "\<cr>" )
+    elseif (a:char =~ 'tab' )
+        return( "\<tab>" )
+    endif
 endfunction
 
 function s:upcase() abort
